@@ -1,0 +1,10 @@
+credentials:
+  usernames:
+    admin:
+      email: admin@wfu.edu
+      name: Administrator
+      password: $2b$12$f6SUW5ldt/32l/mz1G05Felp6PksPwOrUX6gCDaRMAD20tOOs86im  # secure production password
+cookie:
+  name: wfu_rag_auth
+  key: wfu_secure_key_2025_change_this_in_production  # Change this to a random string
+  expiry_days: 30
