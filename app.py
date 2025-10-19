@@ -59,21 +59,32 @@ def load_css():
     
     /* Button styling */
     .stButton>button {
-        background-color: var(--wfu-gold);
-        color: var(--wfu-black);
-        border: none;
-        font-weight: 600;
-        transition: all 0.3s;
+        background-color: var(--wfu-gold) !important;
+        color: var(--wfu-black) !important;
+        border: none !important;
+        font-weight: 600 !important;
+        transition: all 0.3s !important;
     }
     
     .stButton>button:hover {
-        background-color: #B8954A;
-        color: var(--wfu-black);
+        background-color: #B8954A !important;
+        color: var(--wfu-black) !important;
     }
     
     /* Sidebar styling */
     [data-testid="stSidebar"] {
-        background-color: #F5F5F5;
+        background-color: #F5F5F5 !important;
+    }
+    
+    /* Main content area */
+    .main .block-container {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    /* Fix column spacing */
+    [data-testid="column"] {
+        padding: 0.5rem !important;
     }
     
     /* Chat messages */
