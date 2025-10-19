@@ -80,11 +80,26 @@ def load_css():
     .main .block-container {
         padding-top: 2rem !important;
         padding-bottom: 2rem !important;
+        max-width: 1200px !important;
     }
     
     /* Fix column spacing */
     [data-testid="column"] {
         padding: 0.5rem !important;
+    }
+    
+    /* Center the main content */
+    .main {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Fix sidebar overlap */
+    @media (min-width: 768px) {
+        .main .block-container {
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
     }
     
     /* Chat messages */
@@ -97,11 +112,25 @@ def load_css():
     
     /* Input fields */
     .stTextInput>div>div>input {
-        border: 2px solid #CCCCCC;
+        border: 2px solid #CCCCCC !important;
+        border-radius: 5px !important;
+        padding: 0.5rem !important;
     }
     
     .stTextInput>div>div>input:focus {
-        border-color: var(--wfu-gold);
+        border-color: var(--wfu-gold) !important;
+        box-shadow: 0 0 0 0.1rem rgba(158, 126, 56, 0.25) !important;
+    }
+    
+    /* Fix text area styling */
+    .stTextArea>div>div>textarea {
+        border: 2px solid #CCCCCC !important;
+        border-radius: 5px !important;
+    }
+    
+    .stTextArea>div>div>textarea:focus {
+        border-color: var(--wfu-gold) !important;
+        box-shadow: 0 0 0 0.1rem rgba(158, 126, 56, 0.25) !important;
     }
     
     /* Success/Info boxes */
@@ -196,11 +225,12 @@ def main():
     # User is authenticated
     if authentication_status:
         # Display logo and header
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
+        # Center the logo and header
+        logo_col1, logo_col2, logo_col3 = st.columns([1, 2, 1])
+        with logo_col2:
             logo_path = Path(__file__).parent / 'assets' / 'WFU_Univ_Shield_Black.png'
             if logo_path.exists():
-                st.image(str(logo_path), width=150)
+                st.image(str(logo_path), width=120)
         
         st.markdown("""
         <div class="main-header">
