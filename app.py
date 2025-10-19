@@ -14,15 +14,10 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Add current directory to Python path
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent))
-
-# Import custom modules
-from utils.drive_handler import DriveHandler
-from utils.rag_engine import RAGEngine
-from utils.supabase_store import SupabaseVectorStore
+# Import custom modules directly
+from drive_handler import DriveHandler
+from rag_engine import RAGEngine
+from supabase_store import SupabaseVectorStore
 
 # Load custom CSS for Wake Forest branding
 def load_css():
