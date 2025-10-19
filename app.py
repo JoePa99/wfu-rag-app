@@ -6,28 +6,6 @@ from yaml.loader import SafeLoader
 import os
 from datetime import datetime
 
-# Handle Railway port configuration
-if __name__ == "__main__":
-    import sys
-    import subprocess
-    
-    # Get port from environment
-    port = os.environ.get('PORT', '8501')
-    try:
-        port = str(int(port))  # Validate it's a number
-    except (ValueError, TypeError):
-        port = '8501'
-    
-    # If running directly, start with proper port
-    if len(sys.argv) == 1:  # No additional args means we're being started directly
-        cmd = [
-            sys.executable, '-m', 'streamlit', 'run', __file__,
-            '--server.port', port,
-            '--server.address', '0.0.0.0',
-            '--server.headless', 'true'
-        ]
-        subprocess.run(cmd)
-        sys.exit()
 
 # Page config must be first Streamlit command
 st.set_page_config(
