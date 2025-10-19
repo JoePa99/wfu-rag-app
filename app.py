@@ -36,13 +36,17 @@ def load_css():
         background-color: #FFFFFF;
     }
     
-    /* Header styling */
+    /* Header styling - more prominent */
     .main-header {
-        background-color: var(--wfu-black);
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin-bottom: 2rem;
-        text-align: center;
+        background-color: var(--wfu-black) !important;
+        padding: 1.5rem !important;
+        border-radius: 10px !important;
+        margin: 2rem 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 800px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
     
     .main-header h1 {
@@ -77,29 +81,53 @@ def load_css():
         background-color: #F5F5F5 !important;
     }
     
-    /* Main content area */
+    /* Main content area - more aggressive styling */
     .main .block-container {
         padding-top: 2rem !important;
         padding-bottom: 2rem !important;
         max-width: 1200px !important;
+        margin: 0 auto !important;
     }
     
-    /* Fix column spacing */
+    /* Fix column spacing and center content */
     [data-testid="column"] {
         padding: 0.5rem !important;
+        display: flex !important;
+        justify-content: center !important;
     }
     
-    /* Center the main content */
+    /* Center the main content and fix width issues */
     .main {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
+        width: 100% !important;
+        max-width: none !important;
     }
     
-    /* Fix sidebar overlap */
+    /* Force proper layout */
+    .stApp > div:first-child {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    /* Fix the main content container */
+    section.main > div:first-child {
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 2rem 1rem !important;
+    }
+    
+    /* Responsive adjustments */
     @media (min-width: 768px) {
         .main .block-container {
             padding-left: 2rem !important;
             padding-right: 2rem !important;
+        }
+        
+        section.main > div:first-child {
+            padding: 2rem !important;
         }
     }
     
@@ -176,6 +204,27 @@ def load_css():
         border-top: 1px solid #EEEEEE;
         margin-top: 3rem;
     }
+    
+    /* Logo container centering */
+    .logo-container {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Fix any remaining layout issues */
+    div[data-testid="stVerticalBlock"] > div:first-child {
+        width: 100% !important;
+    }
+    
+    /* Ensure sidebar doesn't overlap */
+    @media (max-width: 768px) {
+        .main {
+            margin-left: 0 !important;
+        }
+    }
+    
     </style>
     """, unsafe_allow_html=True)
 
