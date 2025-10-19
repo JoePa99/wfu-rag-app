@@ -17,23 +17,35 @@ class DriveHandler:
     
     def __init__(self):
         """Initialize Google Drive API with service account credentials"""
-        # Load service account credentials from environment
-        service_account_file = os.getenv('GOOGLE_SERVICE_ACCOUNT_FILE')
+        import json
         
-        if not service_account_file or not os.path.exists(service_account_file):
-            raise ValueError(
-                "Service account file not found. Please set GOOGLE_SERVICE_ACCOUNT_FILE "
-                "environment variable to the path of your service account JSON file."
-            )
+        # Try to load from JSON string in environment variable first
+        service_account_json = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON')
+        service_account_file = os.getenv('GOOGLE_SERVICE_ACCOUNT_FILE')
         
         # Define the required scopes
         SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
         
-        # Create credentials from service account file
-        credentials = service_account.Credentials.from_service_account_file(
-            service_account_file,
-            scopes=SCOPES
-        )
+        if service_account_json:
+            # Load from JSON string
+            try:
+                cred_info = json.loads(service_account_json)
+                credentials = service_account.Credentials.from_service_account_info(
+                    cred_info, scopes=SCOPES
+                )
+            except json.JSONDecodeError:
+                raise ValueError("Invalid JSON in GOOGLE_SERVICE_ACCOUNT_JSON environment variable")
+        elif service_account_file and os.path.exists(service_account_file):
+            # Load from file
+            credentials = service_account.Credentials.from_service_account_file(
+                service_account_file, scopes=SCOPES
+            )
+        else:
+            raise ValueError(
+                "Service account credentials not found. Please set either:\n"
+                "- GOOGLE_SERVICE_ACCOUNT_JSON (JSON string) or\n" 
+                "- GOOGLE_SERVICE_ACCOUNT_FILE (file path) environment variable"
+            )
         
         # Build the Drive API service
         self.service = build('drive', 'v3', credentials=credentials)
