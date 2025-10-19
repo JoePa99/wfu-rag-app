@@ -33,7 +33,18 @@ def load_css():
     
     /* Main app styling */
     .stApp {
-        background-color: #FFFFFF;
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
+    
+    /* Force all text to be black */
+    .stApp * {
+        color: #000000 !important;
+    }
+    
+    /* Specific text elements */
+    p, div, span, label, h1, h2, h3, h4, h5, h6 {
+        color: #000000 !important;
     }
     
     /* Header styling - more prominent */
@@ -50,16 +61,16 @@ def load_css():
     }
     
     .main-header h1 {
-        color: var(--wfu-gold);
-        margin: 0;
-        font-size: 2.5rem;
-        font-weight: 700;
+        color: var(--wfu-gold) !important;
+        margin: 0 !important;
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
     }
     
     .main-header p {
-        color: var(--wfu-white);
-        margin: 0.5rem 0 0 0;
-        font-size: 1.1rem;
+        color: var(--wfu-white) !important;
+        margin: 0.5rem 0 0 0 !important;
+        font-size: 1.1rem !important;
     }
     
     /* Button styling */
