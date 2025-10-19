@@ -14,6 +14,11 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Add current directory to Python path
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent))
+
 # Import custom modules
 from utils.drive_handler import DriveHandler
 from utils.rag_engine import RAGEngine
